@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Send beautiful personalized festival wishes to your loved ones. Create custom greetings for Diwali, Holi, Raksha Bandhan, Dussehra, New Year, and Janmashtami.">
+    <meta name="keywords" content="festival wishes, Diwali wishes, Holi wishes, Raksha Bandhan wishes, Dussehra wishes, New Year wishes, Janmashtami wishes, Indian festivals">
+    <meta name="author" content="Indian Festival Wishes">
+    
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Indian Festival Wishes - Send Personalized Greetings">
+    <meta property="og:description" content="Create and share beautiful personalized festival wishes with your loved ones.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/assets/images/og-image.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Indian Festival Wishes - Send Personalized Greetings">
+    <meta name="twitter:description" content="Create and share beautiful personalized festival wishes with your loved ones.">
+    <meta name="twitter:image" content="https://yourwebsite.com/assets/images/og-image.jpg">
+    
+    <title>Indian Festival Wishes - Send Personalized Greetings</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Curtain Overlay -->
+    <div class="curtain-overlay" id="curtainOverlay">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        <div class="curtain-center">
+            <div class="curtain-content">
+                <div class="curtain-icon">🎁</div>
+                <h1 class="curtain-title">A Special Surprise Awaits!</h1>
+                <p class="curtain-subtitle">Tap to reveal your festival greeting</p>
+                <button class="touch-here-btn" id="touchHereBtn">
+                    <span class="touch-text">✨ Touch Here ✨</span>
+                    <div class="touch-pulse"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Festival Animation Container -->
+    <div class="festival-animation" id="festivalAnimation"></div>
+
+    <!-- Animated Background -->
+    <div class="background-animation" id="backgroundAnimation"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">🎉 Indian Festival Wishes</h1>
+            <p class="subtitle">Send personalized greetings to your loved ones</p>
+        </header>
+        
+        <!-- Greeting Display Section -->
+        <div class="greeting-section" id="greetingSection">
+            <div class="greeting-card" id="greetingCard">
+                <div class="festival-icon" id="festivalIcon">🪔</div>
+                <h2 class="greeting-message" id="greetingMessage">
+                    <span class="sender-name" id="senderName">Someone</span> wishes you a very <span class="festival-name" id="festivalName">Happy Diwali</span>!
+                </h2>
+                <div class="festival-decoration" id="festivalDecoration"></div>
+            </div>
+        </div>
+        
+        <!-- Input Section -->
+        <div class="input-section" id="inputSection">
+            <div class="input-card">
+                <label for="nameInput" class="input-label">Enter Your Name:</label>
+                <input 
+                    type="text" 
+                    id="nameInput" 
+                    class="name-input" 
+                    placeholder="Your name here..."
+                    maxlength="50"
+                    autocomplete="off"
+                >
+                
+                <label for="festivalSelect" class="input-label">Select Festival:</label>
+                <select id="festivalSelect" class="festival-select">
+                    <option value="diwali">🪔 Happy Diwali</option>
+                    <option value="holi">🎨 Happy Holi</option>
+                    <option value="raksha-bandhan">🧵 Happy Raksha Bandhan</option>
+                    <option value="dussehra">⚔️ Happy Dussehra</option>
+                    <option value="new-year">🎆 Happy New Year</option>
+                    <option value="janmashtami">🦚 Happy Janmashtami</option>
+                </select>
+                
+                <button id="generateBtn" class="generate-btn">
+                    <span class="btn-text">Generate Greeting</span>
+                    <span class="btn-icon">✨</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Share Section -->
+        <div class="share-section" id="shareSection" style="display: none;">
+            <div class="share-card">
+                <h3 class="share-title">Share Your Greeting</h3>
+                
+                <div class="share-buttons">
+                    <button id="whatsappBtn" class="share-btn whatsapp-btn">
+                        <span class="btn-icon">📱</span>
+                        <span class="btn-text">Share on WhatsApp</span>
+                    </button>
+                    
+                    <button id="copyBtn" class="share-btn copy-btn">
+                        <span class="btn-icon">📋</span>
+                        <span class="btn-text">Copy Link</span>
+                    </button>
+                </div>
+                
+                <div class="link-preview" id="linkPreview">
+                    <p class="link-label">Your Shareable Link:</p>
+                    <div class="link-box">
+                        <input type="text" id="shareLink" class="share-link-input" readonly>
+                        <button id="copyIconBtn" class="copy-icon-btn" title="Copy Link">📋</button>
+                    </div>
+                </div>
+                
+                <button id="createNewBtn" class="create-new-btn">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-text">Create New Greeting</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ for spreading joy and happiness</p>
+            <p class="footer-note">Share the festival spirit with everyone!</p>
+        </footer>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-message" id="toastMessage">Link copied to clipboard!</span>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
