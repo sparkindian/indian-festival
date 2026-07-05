@@ -13,7 +13,6 @@
 <!-- Background Effects -->
 <div class="background"></div>
 <div class="particles" id="particles"></div>
-<div class="hearts" id="hearts"></div>
 <div class="confetti" id="confetti"></div>
 
 
@@ -70,7 +69,7 @@
 
             <div class="wish-subline">
                 <span class="sparkle">✦</span>
-                <span class="wish-subline-text" id="wishSublineText">wishes you a very</span>
+                <span class="wish-subline-text">wishes you a very</span>
                 <span class="sparkle">✦</span>
             </div>
 
@@ -137,10 +136,6 @@
                         <span class="chip-icon">🎆</span>
                         <span class="chip-label">New Year</span>
                     </button>
-                    <button class="chip chip-lifeline" data-festival="lifeline">
-                        <span class="chip-icon">❤️</span>
-                        <span class="chip-label">Lifeline</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -153,7 +148,7 @@
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                     <circle cx="12" cy="7" r="4"/>
                 </svg>
-                <span><span id="nameLabelText">Enter Your Name</span> <span class="req">*</span></span>
+                <span>Enter Your Name <span class="req">*</span></span>
             </label>
             <div class="input-wrap">
                 <input type="text" class="name-input" id="nameInput" placeholder="Your name" autocomplete="off">
@@ -219,6 +214,14 @@
         </div>
 
 
+        <!-- Create New Button -->
+        <button class="create-new-btn" id="createNewBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"/>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+            <span>Create New Wish</span>
+        </button>
     </div>
 </div>
 
@@ -234,16 +237,12 @@
     // correct state is visible on first paint (before app.js runs).
     (function () {
         var config = {
-            'diwali':         { headline: 'Happy Diwali!',         icon: '🪔', emblem: '🪔' },
-            'holi':           { headline: 'Happy Holi!',           icon: '🎨', emblem: '🎨' },
-            'raksha-bandhan': { headline: 'Happy Raksha Bandhan!', icon: '🧵', emblem: '🧵' },
-            'dussehra':       { headline: 'Happy Dussehra!',       icon: '🏹', emblem: '🏹' },
-            'janmashtami':    { headline: 'Happy Janmashtami!',    icon: '🦚', emblem: '🪈' },
-            'new-year':       { headline: 'Happy New Year!',       icon: '🎆', emblem: '🎇' },
-            'lifeline':       { headline: 'Lifeline ❤️',           icon: '❤️', emblem: '💘',
-                subline: 'you are my forever',     nameLabel: "Partner's Name",
-                romantic: true,                    placeholderName: 'Their Name',
-                placeholder: "Partner's name" }
+            'diwali':         { name: 'Happy Diwali',         icon: '🪔', emblem: '🪔' },
+            'holi':           { name: 'Happy Holi',           icon: '🎨', emblem: '🎨' },
+            'raksha-bandhan': { name: 'Happy Raksha Bandhan', icon: '🧵', emblem: '🧵' },
+            'dussehra':       { name: 'Happy Dussehra',       icon: '🏹', emblem: '🏹' },
+            'janmashtami':    { name: 'Happy Janmashtami',    icon: '🦚', emblem: '🪈' },
+            'new-year':       { name: 'Happy New Year',       icon: '🎆', emblem: '🎇' }
         };
         var match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
         var festival = match && config[match[1]] ? match[1] : null;
@@ -271,15 +270,8 @@
         setText('heroEmoji', cfg.icon);
         setText('wishBadge', cfg.icon);
         setText('dividerEmblem', cfg.emblem);
-        setText('wishHeadline', cfg.headline);
-        if (cfg.subline) setText('wishSublineText', cfg.subline);
-        if (cfg.nameLabel) setText('nameLabelText', cfg.nameLabel);
-        if (cfg.placeholder) {
-            var input = document.getElementById('nameInput');
-            if (input) input.placeholder = cfg.placeholder;
-        }
-        var placeholderName = cfg.placeholderName || 'Your Name';
-        setText('wishName', name || placeholderName);
+        setText('wishHeadline', cfg.name + '!');
+        if (name) setText('wishName', name);
     })();
 </script>
 <script src="/js/app.js"></script>
