@@ -111,6 +111,22 @@ let musicOn = false;
 
 
 
+// Base path of the deployment (e.g. "/" on a custom domain,
+// "/indian-festival/" on a GitHub Pages project site).
+// Computed once from the initial URL and always ends with "/".
+const BASE_PATH = (() => {
+    let path = window.location.pathname.replace(/index\.html$/, '');
+    if (!path.endsWith('/')) path += '/';
+    const festMatch = path.match(/([a-z-]+)\/$/);
+    if (festMatch && festivals[festMatch[1]]) {
+        path = path.slice(0, -(festMatch[1].length + 1));
+    }
+    return path;
+})();
+
+
+
+
 // Neutral placeholders shown when no festival is picked yet
 const PLACEHOLDER = {
     icon: '🎁',
@@ -156,8 +172,10 @@ function createHearts(count) {
 
 
 function getFestivalFromPath() {
-    // Matches /diwali/, /holi/, /raksha-bandhan/, etc.
-    const match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
+    // Matches the last path segment so it works under any base path
+    // (root or GitHub Pages project subpath).
+    const path = window.location.pathname.replace(/index\.html$/, '');
+    const match = path.match(/\/([a-z-]+)\/?$/);
     if (match && festivals[match[1]]) return match[1];
     return null;
 }
@@ -336,7 +354,7 @@ function switchToCreateMode() {
 
 function updateUrl(name, festival) {
     const url = new URL(window.location);
-    url.pathname = `/${festival}/`;
+    url.pathname = `${BASE_PATH}${festival}/`;
     if (name) url.searchParams.set('name', name);
     else url.searchParams.delete('name');
     // Drop legacy query param
@@ -349,7 +367,7 @@ function updateUrl(name, festival) {
 
 function clearUrl() {
     const url = new URL(window.location);
-    url.pathname = '/';
+    url.pathname = BASE_PATH;
     url.searchParams.delete('name');
     url.searchParams.delete('festival');
     window.history.pushState({}, '', url);
