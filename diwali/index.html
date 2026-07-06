@@ -151,6 +151,14 @@
                         <span class="chip-icon">🎆</span>
                         <span class="chip-label">New Year</span>
                     </button>
+                    <button class="chip" data-festival="independence-day">
+                        <span class="chip-icon">🇮🇳</span>
+                        <span class="chip-label">Independence<br>Day</span>
+                    </button>
+                    <button class="chip" data-festival="happy-birthday">
+                        <span class="chip-icon">🎂</span>
+                        <span class="chip-label">Happy<br>Birthday</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -249,7 +257,9 @@
             'raksha-bandhan': { name: 'Happy Raksha Bandhan', icon: '🧵', emblem: '🧵' },
             'dussehra':       { name: 'Happy Dussehra',       icon: '🏹', emblem: '🏹' },
             'janmashtami':    { name: 'Happy Janmashtami',    icon: '🦚', emblem: '🪈' },
-            'new-year':       { name: 'Happy New Year',       icon: '🎆', emblem: '🎇' }
+            'new-year':       { name: 'Happy New Year',       icon: '🎆', emblem: '🎇' },
+            'independence-day': { name: 'Happy Independence Day', icon: '🇮🇳', emblem: '⚙️' },
+            'happy-birthday': { name: 'Happy Birthday', icon: '🎂', emblem: '🎈' }
         };
         var match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
         var festival = match && config[match[1]] ? match[1] : null;

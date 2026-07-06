@@ -51,6 +51,18 @@ const festivals = {
         emblem: '🎇',
         theme: 'new-year'
     },
+    'independence-day': {
+        name: 'Happy Independence Day',
+        icon: '🇮🇳',
+        emblem: '⚙️',
+        theme: 'independence-day'
+    },
+    'happy-birthday': {
+        name: 'Happy Birthday',
+        icon: '🎂',
+        emblem: '🎈',
+        theme: 'happy-birthday'
+    },
     lifeline: {
         name: 'Lifeline',
         icon: '❤️',
