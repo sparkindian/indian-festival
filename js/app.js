@@ -4,10 +4,14 @@
  */
 
 
+
+
 const MODE = {
     VIEW: 'view',
     CREATE: 'create'
 };
+
+
 
 
 const festivals = {
@@ -62,6 +66,8 @@ const festivals = {
 };
 
 
+
+
 const el = {
     body: document.body,
     particles: document.getElementById('particles'),
@@ -89,14 +95,20 @@ const el = {
 };
 
 
+
+
 const DEFAULT_SUBLINE = 'wishes you a very';
 const DEFAULT_NAME_LABEL = 'Enter Your Name';
+
+
 
 
 let currentMode = MODE.CREATE;
 let currentFestival = null;
 let currentName = '';
 let musicOn = false;
+
+
 
 
 // Neutral placeholders shown when no festival is picked yet
@@ -107,8 +119,12 @@ const PLACEHOLDER = {
 };
 
 
+
+
 // Ambient theme used only for background/gradient colors when nothing is picked
 const AMBIENT_THEME = 'janmashtami';
+
+
 
 
 function init() {
@@ -117,6 +133,8 @@ function init() {
     bindEvents();
     resolveMode();
 }
+
+
 
 
 function createHearts(count) {
@@ -135,6 +153,8 @@ function createHearts(count) {
 }
 
 
+
+
 function getFestivalFromPath() {
     // Matches /diwali/, /holi/, /raksha-bandhan/, etc.
     const match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
@@ -143,12 +163,16 @@ function getFestivalFromPath() {
 }
 
 
+
+
 function resolveMode() {
     const params = new URLSearchParams(window.location.search);
     const name = (params.get('name') || '').trim();
     const pathFestival = getFestivalFromPath();
     // Prefer path-based festival; fall back to query param for backward compat.
     const festival = pathFestival || params.get('festival');
+
+
 
 
     if (festival && festivals[festival]) {
@@ -170,14 +194,20 @@ function resolveMode() {
     }
 
 
+
+
     updateWishCard('', currentFestival);
     setMode(MODE.CREATE);
 }
 
 
+
+
 function setMode(mode) {
     currentMode = mode;
     el.body.setAttribute('data-mode', mode);
+
+
 
 
     if (mode === MODE.VIEW) {
@@ -186,6 +216,8 @@ function setMode(mode) {
         clearConfetti();
     }
 }
+
+
 
 
 function createParticles(count) {
@@ -201,6 +233,8 @@ function createParticles(count) {
 }
 
 
+
+
 function launchConfetti(count) {
     clearConfetti();
     const styles = getComputedStyle(el.body);
@@ -210,6 +244,8 @@ function launchConfetti(count) {
         `rgb(${styles.getPropertyValue('--accent-rgb').trim()})`,
         '#ffffff'
     ];
+
+
 
 
     for (let i = 0; i < count; i++) {
@@ -227,15 +263,21 @@ function launchConfetti(count) {
     }
 
 
+
+
     // Auto-clean after the last animation ends (~6s max)
     clearTimeout(launchConfetti._t);
     launchConfetti._t = setTimeout(clearConfetti, 7000);
 }
 
 
+
+
 function clearConfetti() {
     el.confetti.innerHTML = '';
 }
+
+
 
 
 function bindEvents() {
@@ -254,14 +296,20 @@ function bindEvents() {
     });
 
 
+
+
     window.addEventListener('popstate', resolveMode);
 }
+
+
 
 
 function switchToCreateMode() {
     const festival = currentFestival;
     currentName = '';
     el.nameInput.value = '';
+
+
 
 
     if (festival) {
@@ -276,10 +324,14 @@ function switchToCreateMode() {
     }
 
 
+
+
     setMode(MODE.CREATE);
     onNameInput();
     setTimeout(() => el.nameInput.focus(), 250);
 }
+
+
 
 
 function updateUrl(name, festival) {
@@ -293,6 +345,8 @@ function updateUrl(name, festival) {
 }
 
 
+
+
 function clearUrl() {
     const url = new URL(window.location);
     url.pathname = '/';
@@ -300,6 +354,8 @@ function clearUrl() {
     url.searchParams.delete('festival');
     window.history.pushState({}, '', url);
 }
+
+
 
 
 function onFestivalSelect(e) {
@@ -317,15 +373,21 @@ function onFestivalSelect(e) {
 }
 
 
+
+
 function setFestival(festival) {
     currentFestival = festival;
     el.body.setAttribute('data-theme', festival);
     el.body.classList.remove('no-festival');
 
 
+
+
     document.querySelectorAll('.chip').forEach(c => {
         c.classList.toggle('active', c.dataset.festival === festival);
     });
+
+
 
 
     const data = festivals[festival];
@@ -344,6 +406,8 @@ function setFestival(festival) {
 }
 
 
+
+
 function clearFestival() {
     currentFestival = null;
     el.body.setAttribute('data-theme', AMBIENT_THEME);
@@ -351,7 +415,11 @@ function clearFestival() {
     delete el.body.dataset.pathFestival;
 
 
+
+
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+
+
 
 
     el.heroEmoji.textContent = PLACEHOLDER.icon;
@@ -363,14 +431,20 @@ function clearFestival() {
 }
 
 
+
+
 function lockPathFestival(festival) {
     el.body.dataset.pathFestival = festival;
 }
 
 
+
+
 function unlockPathFestival() {
     delete el.body.dataset.pathFestival;
 }
+
+
 
 
 function updateWishCard(name, festival) {
@@ -385,11 +459,15 @@ function updateWishCard(name, festival) {
 }
 
 
+
+
 function onNameInput() {
     const value = el.nameInput.value.trim();
     el.clearBtn.classList.toggle('visible', value.length > 0);
     updateWishCard(value, currentFestival);
 }
+
+
 
 
 function requireFestival() {
@@ -405,11 +483,15 @@ function requireFestival() {
 }
 
 
+
+
 function clearName() {
     el.nameInput.value = '';
     onNameInput();
     el.nameInput.focus();
 }
+
+
 
 
 function onGenerate() {
@@ -424,8 +506,38 @@ function onGenerate() {
     updateWishCard(name, currentFestival);
     updateUrl(name, currentFestival);
     launchConfetti(40);
-    showToast('Wish generated! Share it below ✨');
+
+
+    const url = window.location.href;
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url)
+            .then(() => showToast('Wish generated & link copied ✨'))
+            .catch(() => fallbackCopyWithMessage(url, 'Wish generated & link copied ✨'));
+    } else {
+        fallbackCopyWithMessage(url, 'Wish generated & link copied ✨');
+    }
 }
+
+
+
+
+function fallbackCopyWithMessage(text, successMessage) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+        document.execCommand('copy');
+        showToast(successMessage);
+    } catch {
+        showToast('Wish generated! Share it below ✨');
+    }
+    document.body.removeChild(ta);
+}
+
+
 
 
 function shareWhatsApp() {
@@ -441,6 +553,8 @@ function shareWhatsApp() {
 }
 
 
+
+
 function copyLink() {
     if (!requireFestival()) return;
     const name = getShareName();
@@ -454,6 +568,8 @@ function copyLink() {
         fallbackCopy(url);
     }
 }
+
+
 
 
 function fallbackCopy(text) {
@@ -473,6 +589,8 @@ function fallbackCopy(text) {
 }
 
 
+
+
 function getShareName() {
     const name = el.nameInput.value.trim() || currentName;
     if (!name) {
@@ -488,10 +606,14 @@ function getShareName() {
 }
 
 
+
+
 function downloadImage() {
     if (!requireFestival()) return;
     const name = getShareName();
     if (!name) return;
+
+
 
 
     const data = festivals[currentFestival];
@@ -501,10 +623,14 @@ function downloadImage() {
     const ctx = canvas.getContext('2d');
 
 
+
+
     const rootStyles = getComputedStyle(el.body);
     const primary = rgbTriplet(rootStyles.getPropertyValue('--primary-rgb'));
     const secondary = rgbTriplet(rootStyles.getPropertyValue('--secondary-rgb'));
     const accent = rgbTriplet(rootStyles.getPropertyValue('--accent-rgb'));
+
+
 
 
     const bg = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -515,6 +641,8 @@ function downloadImage() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
+
+
     const glow = ctx.createRadialGradient(540, 540, 100, 540, 540, 700);
     glow.addColorStop(0, `rgba(${primary}, 0.4)`);
     glow.addColorStop(0.5, `rgba(${accent}, 0.2)`);
@@ -523,10 +651,14 @@ function downloadImage() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
+
+
     ctx.font = '260px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(data.icon, canvas.width / 2, 380);
+
+
 
 
     ctx.font = 'italic bold 130px "Playfair Display", serif';
@@ -537,9 +669,13 @@ function downloadImage() {
     ctx.fillText(name, canvas.width / 2, 700);
 
 
+
+
     ctx.font = 'italic 48px "Playfair Display", serif';
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
     ctx.fillText('✦  wishes you a very  ✦', canvas.width / 2, 820);
+
+
 
 
     ctx.font = 'italic bold 88px "Playfair Display", serif';
@@ -549,6 +685,8 @@ function downloadImage() {
     headGrad.addColorStop(1, `rgb(${accent})`);
     ctx.fillStyle = headGrad;
     ctx.fillText(`${data.name}!`, canvas.width / 2, 960);
+
+
 
 
     ctx.strokeStyle = `rgba(${secondary}, 0.8)`;
@@ -561,13 +699,19 @@ function downloadImage() {
     ctx.stroke();
 
 
+
+
     ctx.font = '48px Arial';
     ctx.fillText(data.emblem, canvas.width / 2, 1080);
+
+
 
 
     ctx.font = '32px "Inter", sans-serif';
     ctx.fillStyle = 'rgba(255,255,255,0.4)';
     ctx.fillText('Festival Wishes', canvas.width / 2, 1230);
+
+
 
 
     const link = document.createElement('a');
@@ -578,9 +722,13 @@ function downloadImage() {
 }
 
 
+
+
 function rgbTriplet(cssValue) {
     return (cssValue || '255,255,255').trim();
 }
+
+
 
 
 function toggleMusic() {
@@ -588,6 +736,8 @@ function toggleMusic() {
     el.musicBtn.classList.toggle('active', musicOn);
     showToast(musicOn ? 'Music on 🎵' : 'Music off');
 }
+
+
 
 
 function showToast(message) {
@@ -598,5 +748,9 @@ function showToast(message) {
 }
 
 
+
+
 document.addEventListener('DOMContentLoaded', init);
+
+
 
