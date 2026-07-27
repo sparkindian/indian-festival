@@ -57,26 +57,7 @@
     <!-- Hero Illustration -->
     <div class="hero" id="hero">
         <div class="hero-glow"></div>
-        <div class="hero-emoji" id="heroEmoji">
-            <svg viewBox="0 0 200 200" width="160" height="160" style="filter: drop-shadow(0 25px 50px rgba(30,136,229,0.6));">
-                <!-- Shiva Lingam base -->
-                <ellipse cx="100" cy="170" rx="60" ry="15" fill="#4CAF50"/>
-                <ellipse cx="100" cy="165" rx="55" ry="12" fill="#66BB6A"/>
-                <!-- Lingam body -->
-                <path d="M70 165 Q65 120 75 80 Q85 40 100 35 Q115 40 125 80 Q135 120 130 165 Z" fill="#B0BEC5"/>
-                <path d="M75 160 Q72 125 80 90 Q88 55 100 50 Q112 55 120 90 Q128 125 125 160 Z" fill="#CFD8DC"/>
-                <!-- Water drops (Jalabhishek) -->
-                <ellipse cx="85" cy="45" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
-                <ellipse cx="100" cy="40" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
-                <ellipse cx="115" cy="45" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
-                <!-- Snake around lingam -->
-                <path d="M60 140 Q55 130 60 120 Q65 110 75 115 Q85 120 80 130 Q75 140 70 145" stroke="#FF9800" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <!-- Trishul symbol -->
-                <path d="M100 10 L100 35 M85 20 L100 35 L115 20" stroke="#FF9800" stroke-width="3" fill="none" stroke-linecap="round"/>
-                <!-- Om symbol -->
-                <text x="100" y="25" text-anchor="middle" font-size="14" fill="#FF9800" font-weight="bold">ॐ</text>
-            </svg>
-        </div>
+        <div class="hero-emoji" id="heroEmoji">🔱</div>
     </div>
 
     <!-- Wish Card -->
@@ -92,7 +73,7 @@
 
             <div class="wish-subline">
                 <span class="sparkle">✦</span>
-                <span class="wish-subline-text">की ओर से शुभकामना</span>
+                <span class="wish-subline-text" id="wishSublineText">की ओर से शुभकामना</span>
                 <span class="sparkle">✦</span>
             </div>
 
@@ -110,7 +91,7 @@
 
     <!-- View mode CTA -->
     <div class="view-cta mode-view">
-        <button class="create-own-btn" id="createOwnBtn">
+        <button class="create-own-btn" id="createOwnBtn" onclick="switchToCreateMode(); return false;">
             <span class="heart-icon">❤️</span>
             <span>Create Your Own Wish</span>
         </button>
@@ -166,6 +147,10 @@
                         <span class="chip-icon">🙏</span>
                         <span class="chip-label">Saavan</span>
                     </button>
+                    <button class="chip chip-lifeline" data-festival="lifeline">
+                        <span class="chip-icon">❤️</span>
+                        <span class="chip-label">Lifeline</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -177,7 +162,7 @@
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                     <circle cx="12" cy="7" r="4"/>
                 </svg>
-                <span>Enter Your Name <span class="req">*</span></span>
+                <span id="nameLabelText">Enter Your Name <span class="req">*</span></span>
             </label>
             <div class="input-wrap">
                 <input type="text" class="name-input" id="nameInput" placeholder="Your name" autocomplete="off">
@@ -260,9 +245,9 @@
             'new-year':       { name: 'Happy New Year',       icon: '🎆', emblem: '🎇' },
             'independence-day': { name: 'Happy Independence Day', icon: '🇮🇳', emblem: '⚙️' },
             'happy-birthday': { name: 'Happy Birthday', icon: '🎂', emblem: '🎈' },
-            'saavan':         { name: 'सावन की शुभकामनाएं', icon: '🙏', emblem: '🔱' }
+            'saavan':         { name: 'सावन की शुभकामनाएं', icon: '🔱', emblem: '🙏', headline: 'सावन की हार्दिक शुभकामनाएं' }
         };
-        var match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
+        var match = window.location.pathname.replace(/index\.html$/, '').match(/\/([a-z-]+)\/?$/);
         var festival = match && config[match[1]] ? match[1] : null;
         if (!festival) return;
 
@@ -281,10 +266,13 @@
             var el = document.getElementById(id);
             if (el) el.textContent = text;
         };
-        setText('heroEmoji', cfg.icon);
+        // Don't set heroEmoji for Saavan as it uses CSS background image
+        if (festival !== 'saavan') {
+            setText('heroEmoji', cfg.icon);
+        }
         setText('wishBadge', cfg.icon);
         setText('dividerEmblem', cfg.emblem);
-        setText('wishHeadline', cfg.name);
+        setText('wishHeadline', cfg.headline || cfg.name);
         if (name) setText('wishName', name);
     })();
 </script>

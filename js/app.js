@@ -68,7 +68,8 @@ const festivals = {
         icon: '🔱',
         emblem: '🙏',
         theme: 'saavan',
-        subline: 'की ओर से शुभकामना'
+        subline: 'की ओर से शुभकामना',
+        headline: 'सावन की हार्दिक शुभकामनाएं'
     },
     lifeline: {
         name: 'Lifeline',
@@ -325,7 +326,9 @@ function bindEvents() {
     el.whatsappBtn.addEventListener('click', shareWhatsApp);
     el.copyBtn.addEventListener('click', copyLink);
     el.downloadBtn.addEventListener('click', downloadImage);
-    el.createOwnBtn.addEventListener('click', switchToCreateMode);
+    if (el.createOwnBtn) {
+        el.createOwnBtn.addEventListener('click', switchToCreateMode);
+    }
     el.musicBtn.addEventListener('click', toggleMusic);
     el.menuBtn.addEventListener('click', () => showToast('Menu coming soon'));
     el.nameInput.addEventListener('keypress', (e) => {
@@ -428,7 +431,10 @@ function setFestival(festival) {
 
 
     const data = festivals[festival];
-    el.heroEmoji.textContent = data.icon;
+    // Don't set heroEmoji for Saavan as it uses CSS background image
+    if (festival !== 'saavan') {
+        el.heroEmoji.textContent = data.icon;
+    }
     el.wishBadge.textContent = data.icon;
     el.dividerEmblem.textContent = data.emblem;
     if (el.wishSublineText) {
@@ -446,6 +452,7 @@ function setFestival(festival) {
 
 
 function clearFestival() {
+    const wasSaavan = currentFestival === 'saavan';
     currentFestival = null;
     el.body.setAttribute('data-theme', AMBIENT_THEME);
     el.body.classList.add('no-festival');
@@ -453,13 +460,14 @@ function clearFestival() {
 
 
 
-
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
 
 
 
-
-    el.heroEmoji.textContent = PLACEHOLDER.icon;
+    // Don't set heroEmoji for Saavan as it uses CSS background image
+    if (!wasSaavan) {
+        el.heroEmoji.textContent = PLACEHOLDER.icon;
+    }
     el.wishBadge.textContent = PLACEHOLDER.icon;
     el.dividerEmblem.textContent = PLACEHOLDER.emblem;
     if (el.wishSublineText) el.wishSublineText.textContent = DEFAULT_SUBLINE;
@@ -788,6 +796,9 @@ function showToast(message) {
 
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Expose globally for inline handlers
+window.switchToCreateMode = switchToCreateMode;
 
 
 

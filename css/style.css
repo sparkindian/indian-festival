@@ -435,9 +435,15 @@ body[data-theme="saavan"] .wish-badge {
 
 
 body[data-theme="saavan"] .hero-emoji {
-    font-size: 9rem;
-    filter: drop-shadow(0 25px 50px rgba(30,136,229,0.6));
-    animation: shivaFloat 4s ease-in-out infinite;
+    font-size: 0;
+    width: 180px;
+    height: 180px;
+    background-image: url('../saavan/lordShiva.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    display: block;
 }
 
 
@@ -1398,6 +1404,9 @@ body.no-festival .hero-emoji {
 /* ---------- Mode-based visibility ---------- */
 body[data-mode="view"] .mode-create { display: none !important; }
 body[data-mode="create"] .mode-view { display: none !important; }
+
+/* Hide view-cta in create mode since it's only for switching from view to create */
+body[data-mode="create"] .view-cta { display: none !important; }
 
 
 /* Festival is locked by URL path — hide the selector, just ask for name */
