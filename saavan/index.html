@@ -1,39 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Festival Wishes</title>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>सावन शिव वंदना</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="manifest" href="../manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#1E88E5">
+</head>
 
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="manifest" href="../manifest.json">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2P6BW33L7G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-2P6BW33L7G');
+</script>
+<!-- Google tag (gtag.js) End-->
 
-
-        <meta name="theme-color" content="#FF9933">
-    </head>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2P6BW33L7G"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-2P6BW33L7G');
-    </script>
-    <!-- Google tag (gtag.js) End-->
-<body data-theme="independence-day" data-mode="create" class="no-festival">
+<body data-theme="saavan" data-mode="create" class="no-festival">
 <!-- Background Effects -->
 <div class="background"></div>
 <div class="particles" id="particles"></div>
 <div class="confetti" id="confetti"></div>
 
-
 <!-- Main App Container -->
 <div class="app">
-
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -53,106 +48,65 @@
         </button>
     </div>
 
-
     <!-- Received tag (VIEW mode only) -->
     <div class="received-tag mode-view">
         <span class="received-emoji">💌</span>
         <span>You've received a wish</span>
     </div>
 
-
     <!-- Hero Illustration -->
     <div class="hero" id="hero">
         <div class="hero-glow"></div>
         <div class="hero-emoji" id="heroEmoji">
-            <svg viewBox="0 0 900 600" width="200" height="133" style="filter: drop-shadow(0 25px 50px rgba(255,153,51,0.6));">
-                <!-- Saffron stripe -->
-                <rect width="900" height="200" fill="#FF9933"/>
-                <!-- White stripe -->
-                <rect y="200" width="900" height="200" fill="#FFFFFF"/>
-                <!-- Green stripe -->
-                <rect y="400" width="900" height="200" fill="#138808"/>
-                <!-- Ashoka Chakra -->
-                <circle cx="450" cy="300" r="80" fill="none" stroke="#000080" stroke-width="5"/>
-                <circle cx="450" cy="300" r="75" fill="none" stroke="#000080" stroke-width="2"/>
-                <!-- Chakra spokes -->
-                <g stroke="#000080" stroke-width="2">
-                    <line x1="450" y1="220" x2="450" y2="380"/>
-                    <line x1="370" y1="300" x2="530" y2="300"/>
-                    <line x1="393" y1="243" x2="507" y2="357"/>
-                    <line x1="507" y1="243" x2="393" y2="357"/>
-                    <line x1="380" y1="260" x2="520" y2="340"/>
-                    <line x1="520" y1="260" x2="380" y2="340"/>
-                    <line x1="370" y1="280" x2="530" y2="320"/>
-                    <line x1="530" y1="280" x2="370" y2="320"/>
-                    <line x1="393" y1="220" x2="507" y2="380"/>
-                    <line x1="507" y1="220" x2="393" y2="380"/>
-                    <line x1="380" y1="230" x2="520" y2="370"/>
-                    <line x1="520" y1="230" x2="380" y2="370"/>
-                </g>
+            <svg viewBox="0 0 200 200" width="160" height="160" style="filter: drop-shadow(0 25px 50px rgba(30,136,229,0.6));">
+                <!-- Shiva Lingam base -->
+                <ellipse cx="100" cy="170" rx="60" ry="15" fill="#4CAF50"/>
+                <ellipse cx="100" cy="165" rx="55" ry="12" fill="#66BB6A"/>
+                <!-- Lingam body -->
+                <path d="M70 165 Q65 120 75 80 Q85 40 100 35 Q115 40 125 80 Q135 120 130 165 Z" fill="#B0BEC5"/>
+                <path d="M75 160 Q72 125 80 90 Q88 55 100 50 Q112 55 120 90 Q128 125 125 160 Z" fill="#CFD8DC"/>
+                <!-- Water drops (Jalabhishek) -->
+                <ellipse cx="85" cy="45" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
+                <ellipse cx="100" cy="40" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
+                <ellipse cx="115" cy="45" rx="4" ry="6" fill="#64B5F6" opacity="0.8"/>
+                <!-- Snake around lingam -->
+                <path d="M60 140 Q55 130 60 120 Q65 110 75 115 Q85 120 80 130 Q75 140 70 145" stroke="#FF9800" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- Trishul symbol -->
+                <path d="M100 10 L100 35 M85 20 L100 35 L115 20" stroke="#FF9800" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Om symbol -->
+                <text x="100" y="25" text-anchor="middle" font-size="14" fill="#FF9800" font-weight="bold">ॐ</text>
             </svg>
         </div>
     </div>
 
-
     <!-- Wish Card -->
     <div class="wish-card" id="wishCard">
         <div class="wish-card-inner">
-            <div class="wish-lantern wish-lantern-left">🇮🇳</div>
-            <div class="wish-lantern wish-lantern-right">🇮🇳</div>
-            <div class="wish-lantern wish-lantern-right-2">🎆</div>
-            <div class="wish-lantern wish-lantern-left-2">🏳️</div>
-            <div class="wish-lantern wish-lantern-right-3">🎇</div>
+            <div class="wish-lantern wish-lantern-left">🔱</div>
+            <div class="wish-lantern wish-lantern-right">🔔</div>
+            <div class="wish-lantern wish-lantern-right-2">🌿</div>
 
+            <div class="wish-badge" id="wishBadge">🔱</div>
 
-            <div class="wish-badge" id="wishBadge">
-                <svg viewBox="0 0 900 600" width="40" height="27">
-                    <rect width="900" height="200" fill="#FF9933"/>
-                    <rect y="200" width="900" height="200" fill="#FFFFFF"/>
-                    <rect y="400" width="900" height="200" fill="#138808"/>
-                    <circle cx="450" cy="300" r="80" fill="none" stroke="#000080" stroke-width="8"/>
-                    <circle cx="450" cy="300" r="75" fill="none" stroke="#000080" stroke-width="3"/>
-                    <g stroke="#000080" stroke-width="3">
-                        <line x1="450" y1="220" x2="450" y2="380"/>
-                        <line x1="370" y1="300" x2="530" y2="300"/>
-                        <line x1="393" y1="243" x2="507" y2="357"/>
-                        <line x1="507" y1="243" x2="393" y2="357"/>
-                        <line x1="380" y1="260" x2="520" y2="340"/>
-                        <line x1="520" y1="260" x2="380" y2="340"/>
-                        <line x1="370" y1="280" x2="530" y2="320"/>
-                        <line x1="530" y1="280" x2="370" y2="320"/>
-                        <line x1="393" y1="220" x2="507" y2="380"/>
-                        <line x1="507" y1="220" x2="393" y2="380"/>
-                        <line x1="380" y1="230" x2="520" y2="370"/>
-                        <line x1="520" y1="230" x2="380" y2="370"/>
-                    </g>
-                </svg>
-            </div>
-
-
-            <div class="wish-name" id="wishName">Your Name</div>
-
+            <div class="wish-name" id="wishName">आपका नाम</div>
 
             <div class="wish-subline">
                 <span class="sparkle">✦</span>
-                <span class="wish-subline-text">wishes you a very</span>
+                <span class="wish-subline-text">की ओर से शुभकामना</span>
                 <span class="sparkle">✦</span>
             </div>
 
-
-            <div class="wish-headline" id="wishHeadline">Choose a festival</div>
-
+            <div class="wish-headline" id="wishHeadline">सावन की हार्दिक शुभकामनाएं</div>
 
             <div class="wish-divider">
                 <span class="divider-dot">◆</span>
                 <span class="divider-line"></span>
-                <span class="divider-emblem" id="dividerEmblem">✦</span>
+                <span class="divider-emblem" id="dividerEmblem">🔱</span>
                 <span class="divider-line"></span>
                 <span class="divider-dot">◆</span>
             </div>
         </div>
     </div>
-
 
     <!-- View mode CTA -->
     <div class="view-cta mode-view">
@@ -163,10 +117,8 @@
         <p class="view-tagline">Send festive wishes to your loved ones</p>
     </div>
 
-
     <!-- ==== CREATE mode controls ==== -->
     <div class="create-controls mode-create">
-
 
         <!-- Festival Selector -->
         <div class="festival-block">
@@ -218,7 +170,6 @@
             </div>
         </div>
 
-
         <!-- Input Section -->
         <div class="input-section" id="inputSection">
             <label class="input-label" for="nameInput">
@@ -240,7 +191,6 @@
             </div>
         </div>
 
-
         <!-- Generate Button -->
         <button class="generate-btn" id="generateBtn">
             <span>Generate Wish</span>
@@ -250,7 +200,6 @@
             </svg>
         </button>
 
-
         <div class="assurance">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -258,7 +207,6 @@
             </svg>
             <span>Your wish link will be ready to share</span>
         </div>
-
 
         <!-- Action Buttons -->
         <div class="action-buttons" id="actionButtons">
@@ -291,16 +239,13 @@
             </button>
         </div>
 
-
     </div>
 </div>
-
 
 <!-- Toast Notification -->
 <div class="toast" id="toast">
     <span id="toastMessage">Link copied!</span>
 </div>
-
 
 <script>
     // Pre-select festival + populate wish card based on URL path so the
@@ -321,20 +266,16 @@
         var festival = match && config[match[1]] ? match[1] : null;
         if (!festival) return;
 
-
         var cfg = config[festival];
         var name = (new URLSearchParams(window.location.search).get('name') || '').trim();
-
 
         document.body.dataset.theme = festival;
         document.body.dataset.mode = name ? 'view' : 'create';
         document.body.dataset.pathFestival = festival;
         document.body.classList.remove('no-festival');
 
-
         var chip = document.querySelector('.chip[data-festival="' + festival + '"]');
         if (chip) chip.classList.add('active');
-
 
         var setText = function (id, text) {
             var el = document.getElementById(id);
@@ -343,7 +284,7 @@
         setText('heroEmoji', cfg.icon);
         setText('wishBadge', cfg.icon);
         setText('dividerEmblem', cfg.emblem);
-        setText('wishHeadline', cfg.name + '!');
+        setText('wishHeadline', cfg.name);
         if (name) setText('wishName', name);
     })();
 </script>

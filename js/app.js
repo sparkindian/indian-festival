@@ -63,6 +63,13 @@ const festivals = {
         emblem: '🎈',
         theme: 'happy-birthday'
     },
+    saavan: {
+        name: 'सावन की शुभकामनाएं',
+        icon: '🔱',
+        emblem: '🙏',
+        theme: 'saavan',
+        subline: 'की ओर से शुभकामना'
+    },
     lifeline: {
         name: 'Lifeline',
         icon: '❤️',

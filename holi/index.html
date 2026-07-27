@@ -157,6 +157,10 @@
                         <span class="chip-icon">🎂</span>
                         <span class="chip-label">Happy<br>Birthday</span>
                     </button>
+                    <button class="chip" data-festival="saavan">
+                        <span class="chip-icon">🙏</span>
+                        <span class="chip-label">Saavan</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -257,7 +261,8 @@
             'janmashtami':    { name: 'Happy Janmashtami',    icon: '🦚', emblem: '🪈' },
             'new-year':       { name: 'Happy New Year',       icon: '🎆', emblem: '🎇' },
             'independence-day': { name: 'Happy Independence Day', icon: '🇮🇳', emblem: '⚙️' },
-            'happy-birthday': { name: 'Happy Birthday', icon: '🎂', emblem: '🎈' }
+            'happy-birthday': { name: 'Happy Birthday', icon: '🎂', emblem: '🎈' },
+            'saavan':         { name: 'सावन की शुभकामनाएं', icon: '🙏', emblem: '🔱' }
         };
         var match = window.location.pathname.match(/^\/([a-z-]+)\/?$/);
         var festival = match && config[match[1]] ? match[1] : null;
