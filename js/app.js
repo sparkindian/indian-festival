@@ -275,13 +275,19 @@ function createParticles(count) {
 
 function launchConfetti(count) {
     clearConfetti();
-    const styles = getComputedStyle(el.body);
-    const palette = [
-        `rgb(${styles.getPropertyValue('--primary-rgb').trim()})`,
-        `rgb(${styles.getPropertyValue('--secondary-rgb').trim()})`,
-        `rgb(${styles.getPropertyValue('--accent-rgb').trim()})`,
-        '#ffffff'
-    ];
+    const isSaavan = currentFestival === 'saavan';
+    const saavanIcons = ['🔱', '🌊', '🥁', '🕉️', '🌙', '🌿'];
+
+    let palette = null;
+    if (!isSaavan) {
+        const styles = getComputedStyle(el.body);
+        palette = [
+            `rgb(${styles.getPropertyValue('--primary-rgb').trim()})`,
+            `rgb(${styles.getPropertyValue('--secondary-rgb').trim()})`,
+            `rgb(${styles.getPropertyValue('--accent-rgb').trim()})`,
+            '#ffffff'
+        ];
+    }
 
 
 
@@ -290,13 +296,29 @@ function launchConfetti(count) {
         const piece = document.createElement('div');
         piece.className = 'confetti-piece';
         piece.style.left = `${Math.random() * 100}%`;
-        piece.style.background = palette[Math.floor(Math.random() * palette.length)];
-        piece.style.width = `${6 + Math.random() * 6}px`;
-        piece.style.height = `${8 + Math.random() * 8}px`;
-        piece.style.borderRadius = Math.random() > 0.5 ? '2px' : '50%';
         piece.style.animationDelay = `${Math.random() * 2}s`;
         piece.style.animationDuration = `${3 + Math.random() * 3}s`;
-        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        if (isSaavan) {
+            piece.textContent = saavanIcons[Math.floor(Math.random() * saavanIcons.length)];
+            piece.style.background = 'none';
+            piece.style.color = '#ffffff';
+            piece.style.fontSize = `${18 + Math.random() * 8}px`;
+            piece.style.width = '28px';
+            piece.style.height = '28px';
+            piece.style.lineHeight = '28px';
+            piece.style.textAlign = 'center';
+            piece.style.borderRadius = '0';
+            piece.style.transform = 'none';
+            piece.style.animationName = 'flagFall';
+        } else {
+            piece.style.background = palette[Math.floor(Math.random() * palette.length)];
+            piece.style.width = `${6 + Math.random() * 6}px`;
+            piece.style.height = `${8 + Math.random() * 8}px`;
+            piece.style.borderRadius = Math.random() > 0.5 ? '2px' : '50%';
+            piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        }
+
         el.confetti.appendChild(piece);
     }
 
