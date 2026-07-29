@@ -162,6 +162,17 @@ body[data-theme="independence-day"] .wish-lantern-left {
 body[data-theme="independence-day"] .wish-lantern-right {
     animation: flagWave 3s ease-in-out infinite 0.5s;
 }
+body[data-theme="independence-day"] .wish-lantern-left,
+body[data-theme="independence-day"] .wish-lantern-right {
+    background-image: url('../independence-day/flag.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 0;
+    color: transparent;
+    width: 32px;
+    height: 22px;
+}
 body[data-theme="independence-day"] .wish-lantern-right-2 {
     animation: flagWave 3s ease-in-out infinite 1s;
 }
@@ -192,10 +203,13 @@ body[data-theme="independence-day"] .wish-lantern-right-3 {
 
 
 body[data-theme="independence-day"] .wish-badge {
-    background: radial-gradient(circle,
-    rgba(255,153,51,0.3) 0%,
-    rgba(19,136,8,0.2) 50%,
-    rgba(0,51,102,0.15) 100%);
+    background-image: url('../independence-day/img_1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    font-size: 0;
+    color: transparent;
     border-color: rgba(255,153,51,0.6);
     box-shadow: 0 0 30px rgba(255,153,51,0.5);
     animation: badgePulse 2s ease-in-out infinite;
@@ -209,8 +223,15 @@ body[data-theme="independence-day"] .wish-badge {
 
 
 body[data-theme="independence-day"] .hero-emoji {
-    font-size: 9rem;
-    filter: drop-shadow(0 25px 50px rgba(255,153,51,0.6));
+    font-size: 0;
+    width: 200px;
+    height: 133px;
+    background-image: url('../independence-day/flag.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    display: block;
 }
 
 
@@ -1561,6 +1582,18 @@ body[data-mode="view"] .hero {
     0%   { transform: translateY(-10vh) rotate(0deg);    opacity: 0; }
     10%  { opacity: 1; }
     100% { transform: translateY(110vh) rotate(720deg);  opacity: 0.4; }
+}
+@keyframes flagFall {
+    0%   { transform: translateY(-10vh); opacity: 0; }
+    10%  { opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0.4; }
+}
+body[data-theme="independence-day"] .confetti-piece {
+    background: transparent url('../independence-day/flag.svg') center/contain no-repeat !important;
+    width: 18px !important;
+    height: 12px !important;
+    border-radius: 2px !important;
+    animation-name: flagFall !important;
 }
 
 
